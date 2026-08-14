@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200" fill="none">
+  <defs>
+    <linearGradient id="grad-food" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="200" rx="12" fill="url(#grad-food)"/>
+  <circle cx="150" cy="85" r="35" fill="white" fill-opacity="0.2"/>
+  <path d="M135 70H165V90C165 98.2843 158.284 105 150 105C141.716 105 135 98.2843 135 90V70Z" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M165 75H172C175.866 75 179 78.134 179 82V83C179 86.866 175.866 90 172 90H165" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <text x="150" y="145" text-anchor="middle" fill="white" font-family="sans-serif" font-weight="bold" font-size="16" letter-spacing="1">FOOD &amp; DRINKS</text>
+</svg>

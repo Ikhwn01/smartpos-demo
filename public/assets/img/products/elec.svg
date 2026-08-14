@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200" fill="none">
+  <defs>
+    <linearGradient id="grad-elec" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="200" rx="12" fill="url(#grad-elec)"/>
+  <circle cx="150" cy="85" r="35" fill="white" fill-opacity="0.2"/>
+  <path d="M135 85C135 76.7157 141.716 70 150 70C158.284 70 165 76.7157 165 85V95C165 97.7614 162.761 100 160 100H140C137.239 100 135 97.7614 135 95V85Z" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M130 85H135M165 85H170" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <text x="150" y="145" text-anchor="middle" fill="white" font-family="sans-serif" font-weight="bold" font-size="16" letter-spacing="1">ELECTRONICS</text>
+</svg>

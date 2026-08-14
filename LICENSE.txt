@@ -1,0 +1,11 @@
+Commercial Software License Agreement
+
+Copyright (c) SmartPOS Software. All Rights Reserved.
+
+Permission is hereby granted, upon purchase of an official license from Codester / CodeCanyon or authorized digital marketplaces, to use, modify, and deploy this software application in accordance with the purchased license terms:
+
+1. Single Application License: You may install and use this script on a single domain or website for personal or commercial client use.
+2. Extended License: You may customize and deploy this application across multiple client installations.
+3. You may not re-distribute, re-sell, lease, or sub-license the raw source code without explicit authorization.
+
+THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY.

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartPOS - Documentation & Installation Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1e293b;
+            background-color: #f8fafc;
+        }
+        .doc-sidebar {
+            position: sticky;
+            top: 20px;
+            height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+        .nav-doc .nav-link {
+            color: #64748b;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        .nav-doc .nav-link:hover, .nav-doc .nav-link.active {
+            color: #4f46e5;
+            background-color: #eef2ff;
+            font-weight: 600;
+        }
+        .card-custom {
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            background: #ffffff;
+            margin-bottom: 2rem;
+        }
+        .credential-box {
+            background: #f1f5f9;
+            border-left: 4px solid #4f46e5;
+            padding: 1.25rem;
+            border-radius: 0 10px 10px 0;
+        }
+        pre {
+            background: #0f172a;
+            color: #38bdf8;
+            padding: 1rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top py-3 shadow-sm">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold fs-4 d-flex align-items-center" href="#">
+                <i class="bi bi-cart-check-fill me-2"></i> SmartPOS Documentation
+            </a>
+            <span class="navbar-text text-white-50 small">Version 1.0.0 Commercial Release</span>
+        </div>
+    </nav>
+
+    <div class="container-fluid px-4 py-4">
+        <div class="row">
+            <!-- Navigation Sidebar -->
+            <div class="col-lg-3 d-none d-lg-block">
+                <div class="card card-custom p-3 doc-sidebar">
+                    <h6 class="fw-bold text-uppercase text-muted mb-3" style="font-size: 0.75rem; letter-spacing: 1px;">Documentation Sections</h6>
+                    <nav class="nav flex-column nav-doc">
+                        <a class="nav-link active" href="#overview"><i class="bi bi-info-circle me-2"></i> Overview</a>
+                        <a class="nav-link" href="#requirements"><i class="bi bi-cpu me-2"></i> Server Requirements</a>
+                        <a class="nav-link" href="#installation"><i class="bi bi-gear-wide-connected me-2"></i> Installation Guide</a>
+                        <a class="nav-link" href="#credentials"><i class="bi bi-shield-lock me-2"></i> Default Credentials</a>
+                        <a class="nav-link" href="#modules"><i class="bi bi-grid me-2"></i> System Features</a>
+                        <a class="nav-link" href="#faq"><i class="bi bi-question-circle me-2"></i> FAQ & Troubleshooting</a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-9">
+                <!-- Section 1: Overview -->
+                <section id="overview" class="card card-custom p-4">
+                    <h3 class="fw-bold text-primary mb-3">Overview</h3>
+                    <p class="lead">Thank you for purchasing <strong>SmartPOS – All-in-One Point of Sale & Inventory Management System</strong>.</p>
+                    <p>SmartPOS is a commercial-grade web application built using <strong>Laravel 12, PHP 8.2+, Bootstrap 5, Chart.js, and DataTables</strong>. Designed for fast retail POS operations, stock audits, supplier PO receiving, expense tracking, and financial profit reporting.</p>
+                </section>
+
+                <!-- Section 2: Requirements -->
+                <section id="requirements" class="card card-custom p-4">
+                    <h4 class="fw-bold text-dark mb-3"><i class="bi bi-cpu text-primary me-2"></i> Server Requirements</h4>
+                    <p class="text-muted small">Before installing, ensure your web server meets the following system requirements:</p>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <ul class="list-group list-group-flush small">
+                                <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>PHP Version</strong>: 8.2 or higher</li>
+                                <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>Database</strong>: MySQL 5.7+ / MariaDB 10.2+ or SQLite 3.35+</li>
+                                <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>PDO PHP Extension</strong></li>
+                                <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>OpenSSL PHP Extension</strong></li>
+                                <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>Mbstring PHP Extension</strong></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-group list-group-flush small">
+                                <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>Tokenizer & XML Extension</strong></li>
+                                <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>Ctype & JSON Extension</strong></li>
+                                <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>BCMath PHP Extension</strong></li>
+                                <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>cURL & GD Extension</strong></li>
+                                <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>Mod_Rewrite Enabled</strong> (Apache/Nginx)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3: Installation -->
+                <section id="installation" class="card card-custom p-4">
+                    <h4 class="fw-bold text-dark mb-3"><i class="bi bi-gear-wide-connected text-primary me-2"></i> Step-by-Step Installation</h4>
+                    
+                    <h6 class="fw-bold mt-3 text-primary">Method A: Web Installer Wizard (Recommended for cPanel)</h6>
+                    <ol class="small lh-lg">
+                        <li>Upload the files inside <code>Source Code/SmartPOS/</code> to your web hosting root directory (e.g. <code>public_html/</code> or subdomain directory).</li>
+                        <li>Configure your web server document root to point to the <code>public/</code> folder inside the project.</li>
+                        <li>Set file/folder permissions for <code>storage/</code> and <code>bootstrap/cache/</code> to <code>0775</code> (writable).</li>
+                        <li>Open your browser and navigate to: <code>http://your-domain.com/install</code></li>
+                        <li>Follow the 6-step interactive wizard:
+                            <ul>
+                                <li><strong>Step 1</strong>: Verification of PHP version and required extensions.</li>
+                                <li><strong>Step 2</strong>: Enter database connection details (Host, Database Name, User, Password).</li>
+                                <li><strong>Step 3</strong>: Click <em>Run Migrations & Seeders</em> to generate database tables and demo catalog.</li>
+                                <li><strong>Step 4</strong>: Create Super Administrator account.</li>
+                                <li><strong>Step 5</strong>: Configure store name, currency symbol, and sales tax rate.</li>
+                                <li><strong>Step 6</strong>: Installation Complete!</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h6 class="fw-bold mt-4 text-primary">Method B: Local Development Setup (XAMPP / Laragon / Terminal)</h6>
+                    <pre><code># 1. Navigate to project root
+cd /path/to/SmartPOS
+
+# 2. Setup Environment
+cp .env.example .env
+php artisan key:generate
+
+# 3. Migrate and Seed Database
+php artisan migrate --seed
+
+# 4. Start Local Server
+php artisan serve</code></pre>
+                </section>
+
+                <!-- Section 4: Default Credentials -->
+                <section id="credentials" class="card card-custom p-4">
+                    <h4 class="fw-bold text-dark mb-3"><i class="bi bi-shield-lock text-primary me-2"></i> Default Admin & Staff Credentials</h4>
+                    <p class="text-muted small">After running database seeders or completing the web installer, use the following demo accounts:</p>
+                    
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="credential-box">
+                                <h6 class="fw-bold text-primary mb-2"><i class="bi bi-person-badge me-1"></i> Administrator Account</h6>
+                                <div class="small"><strong>Email:</strong> <code>admin@example.com</code></div>
+                                <div class="small"><strong>Password:</strong> <code>password</code></div>
+                                <div class="small text-muted mt-2">Full access to POS, Financial Profit Statements, User Management, & Settings.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="credential-box" style="border-left-color: #0ea5e9;">
+                                <h6 class="fw-bold text-info mb-2"><i class="bi bi-display me-1"></i> Staff / Cashier Account</h6>
+                                <div class="small"><strong>Email:</strong> <code>staff@example.com</code></div>
+                                <div class="small"><strong>Password:</strong> <code>password</code></div>
+                                <div class="small text-muted mt-2">Access to POS Terminal, Products list, Customer list, & Personal Sales.</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 5: Features -->
+                <section id="modules" class="card card-custom p-4">
+                    <h4 class="fw-bold text-dark mb-3"><i class="bi bi-grid text-primary me-2"></i> Key Features</h4>
+                    <div class="row g-3 small">
+                        <div class="col-md-6">
+                            <div class="p-3 bg-light rounded border">
+                                <h6><i class="bi bi-display text-primary me-2"></i> POS Terminal</h6>
+                                Real-time AJAX search by keyword, SKU, or barcode scanner. Live cart calculation, change return, thermal receipt & PDF print.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 bg-light rounded border">
+                                <h6><i class="bi bi-boxes text-success me-2"></i> Automated Inventory</h6>
+                                Purchases auto-increment stock. POS checkout auto-decrements stock. Manual stock adjustments with audit log notes.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 bg-light rounded border">
+                                <h6><i class="bi bi-translate text-info me-2"></i> Multi-Language Support</h6>
+                                Instant language switcher between English (🇬🇧) and Bahasa Indonesia (🇮🇩) with session locale persistence.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 bg-light rounded border">
+                                <h6><i class="bi bi-bar-chart-line text-warning me-2"></i> Financial Reports</h6>
+                                Sales, Purchases, Stock Valuation, Best Selling Products, and Net Profit Statement (<code>Net Profit = Revenue - COGS - Expenses</code>).
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 6: FAQ -->
+                <section id="faq" class="card card-custom p-4">
+                    <h4 class="fw-bold text-dark mb-3"><i class="bi bi-question-circle text-primary me-2"></i> FAQ & Troubleshooting</h4>
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    How do I change store identity, currency symbol, and tax rate?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body small text-muted">
+                                    Log in as Administrator and navigate to <strong>Store Settings</strong>. Update Store Name, Currency Symbol (e.g. <code>$</code>, <code>Rp</code>, <code>€</code>), Tax Rate (%), Invoice Prefix, and Default Language.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    Why does the Web Installer wizard appear when visiting the site?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body small text-muted">
+                                    The installer wizard automatically triggers if <code>storage/installed</code> file is missing. After completing setup wizard step 6, the system creates this lock file.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-white border-top py-4 text-center text-muted small">
+        Copyright &copy; 2026 SmartPOS. All Rights Reserved. Commercial License.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

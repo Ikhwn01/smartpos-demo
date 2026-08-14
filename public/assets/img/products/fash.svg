@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200" fill="none">
+  <defs>
+    <linearGradient id="grad-fash" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="200" rx="12" fill="url(#grad-fash)"/>
+  <circle cx="150" cy="85" r="35" fill="white" fill-opacity="0.2"/>
+  <path d="M130 65L142 75H158L170 65L185 75L175 105H125L115 75L130 65Z" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="150" y="145" text-anchor="middle" fill="white" font-family="sans-serif" font-weight="bold" font-size="16" letter-spacing="1">FASHION &amp; STYLE</text>
+</svg>
