@@ -1,6 +1,11 @@
 <?php
 
 try {
+    // Flag Vercel environment
+    putenv('VERCEL=1');
+    $_ENV['VERCEL'] = '1';
+    $_SERVER['VERCEL'] = '1';
+
     // Ensure /tmp has a writable copy of the SQLite database and log file
     $tmpDb = '/tmp/database.sqlite';
     $tmpLog = '/tmp/laravel.log';
@@ -14,6 +19,12 @@ try {
         @touch($tmpLog);
     }
 
+    // Ensure storage structure exists in /tmp
+    @mkdir('/tmp/logs', 0777, true);
+    @mkdir('/tmp/framework/views', 0777, true);
+    @mkdir('/tmp/framework/sessions', 0777, true);
+    @mkdir('/tmp/framework/cache', 0777, true);
+
     // Override environment variables for Vercel read-only filesystem
     $_ENV['APP_ENV'] = 'production';
     $_ENV['APP_DEBUG'] = 'false';
@@ -23,7 +34,7 @@ try {
     $_ENV['DB_DATABASE'] = $tmpDb;
     $_ENV['SESSION_DRIVER'] = 'cookie';
     $_ENV['CACHE_STORE'] = 'array';
-    $_ENV['VIEW_COMPILED_PATH'] = '/tmp';
+    $_ENV['VIEW_COMPILED_PATH'] = '/tmp/framework/views';
 
     putenv('APP_ENV=production');
     putenv('APP_DEBUG=false');
@@ -33,7 +44,7 @@ try {
     putenv("DB_DATABASE={$tmpDb}");
     putenv('SESSION_DRIVER=cookie');
     putenv('CACHE_STORE=array');
-    putenv('VIEW_COMPILED_PATH=/tmp');
+    putenv('VIEW_COMPILED_PATH=/tmp/framework/views');
 
     // Forward request to Laravel entry point
     require __DIR__ . '/../public/index.php';
