@@ -10,7 +10,7 @@
     <div class="text-center p-5 bg-white rounded shadow-sm border" style="max-width: 480px;">
         <i class="bi bi-gear-wide-connected text-danger display-1 mb-3"></i>
         <h2 class="fw-bold mb-2">500 - Server Error</h2>
-        <p class="text-muted small mb-4">Something went wrong on our servers. Our technical team has been notified. Please try again shortly.</p>
+        <p class="text-danger small mb-4">{{ $exception->getMessage() ?? 'Something went wrong on our servers.' }}</p>
         <a href="{{ route('dashboard') }}" class="btn btn-primary fw-semibold">Return to Dashboard</a>
     </div>
 </body>
