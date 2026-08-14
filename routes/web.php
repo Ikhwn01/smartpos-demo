@@ -27,6 +27,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/lang/{locale}', [LanguageController::class, 'switch'])->name('lang.switch');
 
+// Auto Clear Browser Cookies Route
+Route::get('/clear-cookies', function () {
+    return response('<!DOCTYPE html><html><head><meta http-equiv="refresh" content="1;url=/demo/admin"></head><body style="font-family:sans-serif;text-align:center;padding:50px;"><h2>Clearing Browser Cookies...</h2><p>Redirecting to Demo Admin in 1 second...</p></body></html>')
+        ->header('Clear-Site-Data', '"cookies", "storage"');
+});
+
 // Installer Routes
 Route::prefix('install')->name('install.')->group(function () {
     Route::get('/step1', [InstallController::class, 'step1'])->name('step1');
