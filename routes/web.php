@@ -29,8 +29,9 @@ Route::get('/lang/{locale}', [LanguageController::class, 'switch'])->name('lang.
 
 // Auto Clear Browser Cookies Route
 Route::get('/clear-cookies', function () {
-    return response('<!DOCTYPE html><html><head><meta http-equiv="refresh" content="1;url=/demo/admin"></head><body style="font-family:sans-serif;text-align:center;padding:50px;"><h2>Clearing Browser Cookies...</h2><p>Redirecting to Demo Admin in 1 second...</p></body></html>')
-        ->header('Clear-Site-Data', '"cookies", "storage"');
+    return response('<!DOCTYPE html><html><head><meta http-equiv="refresh" content="1;url=/demo/admin"></head><body style="font-family:sans-serif;text-align:center;padding:50px;"><h2>Clearing Browser Cookies...</h2><p><a href="/demo/admin">Click here if not redirected in 1 second</a></p></body></html>', 200)
+        ->header('Clear-Site-Data', '"cookies", "storage"')
+        ->header('Content-Type', 'text/html');
 });
 
 // Installer Routes
