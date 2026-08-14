@@ -36,7 +36,7 @@ try {
     $_ENV['LOG_PATH'] = $tmpLog;
     $_ENV['DB_CONNECTION'] = 'sqlite';
     $_ENV['DB_DATABASE'] = $tmpDb;
-    $_ENV['SESSION_DRIVER'] = 'cookie';
+    $_ENV['SESSION_DRIVER'] = 'file';
     $_ENV['SESSION_COOKIE'] = 'smartpos_session';
     $_ENV['CACHE_STORE'] = 'array';
     $_ENV['VIEW_COMPILED_PATH'] = '/tmp/framework/views';
@@ -47,7 +47,7 @@ try {
     putenv("LOG_PATH={$tmpLog}");
     putenv('DB_CONNECTION=sqlite');
     putenv("DB_DATABASE={$tmpDb}");
-    putenv('SESSION_DRIVER=cookie');
+    putenv('SESSION_DRIVER=file');
     putenv('SESSION_COOKIE=smartpos_session');
     putenv('CACHE_STORE=array');
     putenv('VIEW_COMPILED_PATH=/tmp/framework/views');
