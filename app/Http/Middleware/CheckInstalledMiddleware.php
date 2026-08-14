@@ -14,7 +14,7 @@ class CheckInstalledMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $installedFile = storage_path('installed');
-        $isInstalled = file_exists($installedFile);
+        $isInstalled = file_exists($installedFile) || isset($_ENV['VERCEL']) || isset($_SERVER['VERCEL']);
         $isInstallRoute = $request->is('install*');
 
         if (!$isInstalled && !$isInstallRoute) {
