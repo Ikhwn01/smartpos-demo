@@ -1,6 +1,14 @@
 <?php
 
 try {
+    // Auto-truncate bloated HTTP cookie header from client browser to prevent Vercel 494 header overflow
+    if (isset($_SERVER['HTTP_COOKIE']) && strlen($_SERVER['HTTP_COOKIE']) > 1000) {
+        $_SERVER['HTTP_COOKIE'] = '';
+    }
+    if (isset($_ENV['HTTP_COOKIE']) && strlen($_ENV['HTTP_COOKIE']) > 1000) {
+        $_ENV['HTTP_COOKIE'] = '';
+    }
+
     // Flag Vercel environment
     putenv('VERCEL=1');
     $_ENV['VERCEL'] = '1';
