@@ -11,8 +11,12 @@ try {
     $tmpLog = '/tmp/laravel.log';
     $srcDb = __DIR__ . '/../database/database.sqlite';
 
-    if (!file_exists($tmpDb) && file_exists($srcDb)) {
-        @copy($srcDb, $tmpDb);
+    if (!file_exists($tmpDb)) {
+        if (file_exists($srcDb) && filesize($srcDb) > 0) {
+            @copy($srcDb, $tmpDb);
+        } else {
+            @touch($tmpDb);
+        }
     }
 
     if (!file_exists($tmpLog)) {
