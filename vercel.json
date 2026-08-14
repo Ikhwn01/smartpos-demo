@@ -26,8 +26,8 @@
     "APP_SERVICES_CACHE": "/tmp/services.php",
     "VIEW_COMPILED_PATH": "/tmp/framework/views",
     "CACHE_STORE": "array",
-    "SESSION_DRIVER": "file",
-    "SESSION_COOKIE": "smartpos_session",
+    "SESSION_DRIVER": "array",
+    "SESSION_COOKIE": "pos_sess",
     "LOG_CHANNEL": "errorlog",
     "DB_CONNECTION": "sqlite",
     "DB_DATABASE": "/tmp/database.sqlite"
