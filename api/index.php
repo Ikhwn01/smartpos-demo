@@ -46,6 +46,7 @@ try {
 
     // Ensure storage structure exists in /tmp
     @mkdir('/tmp/logs', 0777, true);
+    @mkdir('/tmp/cache', 0777, true);
     @mkdir('/tmp/framework/views', 0777, true);
     @mkdir('/tmp/framework/sessions', 0777, true);
     @mkdir('/tmp/framework/cache', 0777, true);
