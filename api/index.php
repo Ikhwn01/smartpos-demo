@@ -62,6 +62,8 @@ try {
     $_ENV['DB_DATABASE'] = $tmpDb;
     $_ENV['SESSION_DRIVER'] = 'database';
     $_ENV['SESSION_COOKIE'] = 'pos_sess';
+    $_ENV['SESSION_LIFETIME'] = '120';
+    $_ENV['SESSION_EXPIRE_ON_CLOSE'] = 'false';
     $_ENV['CACHE_STORE'] = 'array';
     $_ENV['VIEW_COMPILED_PATH'] = '/tmp/framework/views';
 
@@ -74,6 +76,8 @@ try {
     putenv("DB_DATABASE={$tmpDb}");
     putenv('SESSION_DRIVER=database');
     putenv('SESSION_COOKIE=pos_sess');
+    putenv('SESSION_LIFETIME=120');
+    putenv('SESSION_EXPIRE_ON_CLOSE=false');
     putenv('CACHE_STORE=array');
     putenv('VIEW_COMPILED_PATH=/tmp/framework/views');
 
