@@ -27,7 +27,7 @@ $app = Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->render(function (\Throwable $e) {
-            return response(
+            return new \Symfony\Component\HttpFoundation\Response(
                 "<h1>Original Application Exception</h1>" .
                 "<p><strong>Class:</strong> " . get_class($e) . "</p>" .
                 "<p><strong>Message:</strong> " . htmlspecialchars($e->getMessage()) . "</p>" .
