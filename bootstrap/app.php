@@ -26,7 +26,16 @@ $app = Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        $exceptions->render(function (\Throwable $e) {
+            return response(
+                "<h1>Original Application Exception</h1>" .
+                "<p><strong>Class:</strong> " . get_class($e) . "</p>" .
+                "<p><strong>Message:</strong> " . htmlspecialchars($e->getMessage()) . "</p>" .
+                "<p><strong>File:</strong> " . htmlspecialchars($e->getFile()) . ":" . $e->getLine() . "</p>" .
+                "<pre>" . htmlspecialchars($e->getTraceAsString()) . "</pre>",
+                500
+            );
+        });
     })->create();
 
 if (isset($_SERVER['VERCEL']) || isset($_ENV['VERCEL']) || getenv('VERCEL') || defined('VERCEL')) {
