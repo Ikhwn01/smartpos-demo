@@ -58,31 +58,35 @@ try {
 
     $appKey = 'base64:HZhD1Z2XLzBOIJjzrAm3Qr76NVyvQqRwo3qj5gyhaRo=';
 
-    // Bootstrap Laravel and override config directly to guarantee session persistence
-    if (!defined('LARAVEL_START')) {
-        define('LARAVEL_START', microtime(true));
-    }
-    require __DIR__ . '/../vendor/autoload.php';
-    
-    /** @var \Illuminate\Foundation\Application $app */
-    $app = require __DIR__ . '/../bootstrap/app.php';
+    // Override environment variables for Vercel read-only filesystem
+    $_ENV['APP_KEY'] = $appKey;
+    $_ENV['APP_ENV'] = 'production';
+    $_ENV['APP_DEBUG'] = 'false';
+    $_ENV['LOG_CHANNEL'] = 'errorlog';
+    $_ENV['LOG_PATH'] = $tmpLog;
+    $_ENV['DB_CONNECTION'] = 'sqlite';
+    $_ENV['DB_DATABASE'] = $tmpDb;
+    $_ENV['SESSION_DRIVER'] = 'file';
+    $_ENV['SESSION_COOKIE'] = 'pos_sess';
+    $_ENV['SESSION_LIFETIME'] = '120';
+    $_ENV['CACHE_STORE'] = 'array';
+    $_ENV['VIEW_COMPILED_PATH'] = '/tmp/framework/views';
 
-    config([
-        'app.key' => $appKey,
-        'app.env' => 'production',
-        'app.debug' => false,
-        'database.default' => 'sqlite',
-        'database.connections.sqlite.database' => $tmpDb,
-        'session.driver' => 'file',
-        'session.lifetime' => 120,
-        'session.expire_on_close' => false,
-        'session.cookie' => 'pos_sess',
-        'session.files' => '/tmp/framework/sessions',
-        'cache.default' => 'array',
-        'view.compiled' => '/tmp/framework/views',
-    ]);
+    putenv("APP_KEY={$appKey}");
+    putenv('APP_ENV=production');
+    putenv('APP_DEBUG=false');
+    putenv('LOG_CHANNEL=errorlog');
+    putenv("LOG_PATH={$tmpLog}");
+    putenv('DB_CONNECTION=sqlite');
+    putenv("DB_DATABASE={$tmpDb}");
+    putenv('SESSION_DRIVER=file');
+    putenv('SESSION_COOKIE=pos_sess');
+    putenv('SESSION_LIFETIME=120');
+    putenv('CACHE_STORE=array');
+    putenv('VIEW_COMPILED_PATH=/tmp/framework/views');
 
-    $app->handleRequest(\Illuminate\Http\Request::capture());
+    // Forward request to Laravel entry point
+    require __DIR__ . '/../public/index.php';
 
 } catch (\Throwable $e) {
     http_response_code(500);
