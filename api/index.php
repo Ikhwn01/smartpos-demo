@@ -79,29 +79,8 @@ try {
     putenv('CACHE_STORE=array');
     putenv('VIEW_COMPILED_PATH=/tmp/framework/views');
 
-    // Bootstrap Laravel and handle request with explicit exception logging
-    if (!defined('LARAVEL_START')) {
-        define('LARAVEL_START', microtime(true));
-    }
-    require __DIR__ . '/../vendor/autoload.php';
-
-    /** @var \Illuminate\Foundation\Application $app */
-    $app = require __DIR__ . '/../bootstrap/app.php';
-
-    $request = \Illuminate\Http\Request::capture();
-    $kernel = $app->make(\Illuminate\Contracts\Http\Kernel::class);
-
-    try {
-        $response = $kernel->handle($request);
-        $response->send();
-        $kernel->terminate($request, $response);
-    } catch (\Throwable $innerEx) {
-        http_response_code(500);
-        echo "<h1>Inner Laravel Exception</h1>";
-        echo "<p><strong>Class:</strong> " . get_class($innerEx) . "</p>";
-        echo "<p><strong>Message:</strong> " . htmlspecialchars($innerEx->getMessage()) . "</p>";
-        echo "<pre>" . htmlspecialchars($innerEx->getTraceAsString()) . "</pre>";
-    }
+    // Forward request to Laravel entry point
+    require __DIR__ . '/../public/index.php';
 
 } catch (\Throwable $e) {
     http_response_code(500);
