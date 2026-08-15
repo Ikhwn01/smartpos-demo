@@ -1,11 +1,11 @@
 <?php
 
 try {
-    // Auto-truncate bloated HTTP cookie header from client browser to prevent Vercel 494 header overflow
-    if (isset($_SERVER['HTTP_COOKIE']) && strlen($_SERVER['HTTP_COOKIE']) > 1000) {
+    // Auto-truncate bloated HTTP cookie header from client browser to prevent Vercel 494 header overflow (only if extremely large)
+    if (isset($_SERVER['HTTP_COOKIE']) && strlen($_SERVER['HTTP_COOKIE']) > 3500) {
         $_SERVER['HTTP_COOKIE'] = '';
     }
-    if (isset($_ENV['HTTP_COOKIE']) && strlen($_ENV['HTTP_COOKIE']) > 1000) {
+    if (isset($_ENV['HTTP_COOKIE']) && strlen($_ENV['HTTP_COOKIE']) > 3500) {
         $_ENV['HTTP_COOKIE'] = '';
     }
 
@@ -44,7 +44,7 @@ try {
     $_ENV['LOG_PATH'] = $tmpLog;
     $_ENV['DB_CONNECTION'] = 'sqlite';
     $_ENV['DB_DATABASE'] = $tmpDb;
-    $_ENV['SESSION_DRIVER'] = 'array';
+    $_ENV['SESSION_DRIVER'] = 'cookie';
     $_ENV['SESSION_COOKIE'] = 'pos_sess';
     $_ENV['CACHE_STORE'] = 'array';
     $_ENV['VIEW_COMPILED_PATH'] = '/tmp/framework/views';
@@ -55,7 +55,7 @@ try {
     putenv("LOG_PATH={$tmpLog}");
     putenv('DB_CONNECTION=sqlite');
     putenv("DB_DATABASE={$tmpDb}");
-    putenv('SESSION_DRIVER=array');
+    putenv('SESSION_DRIVER=cookie');
     putenv('SESSION_COOKIE=pos_sess');
     putenv('CACHE_STORE=array');
     putenv('VIEW_COMPILED_PATH=/tmp/framework/views');
