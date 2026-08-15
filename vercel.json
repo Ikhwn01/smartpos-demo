@@ -24,7 +24,7 @@
     "APP_PACKAGES_CACHE": "/tmp/packages.php",
     "APP_SERVICES_CACHE": "/tmp/services.php",
     "CACHE_STORE": "array",
-    "SESSION_DRIVER": "database",
+    "SESSION_DRIVER": "cookie",
     "SESSION_COOKIE": "pos_sess",
     "SESSION_LIFETIME": "120",
     "LOG_CHANNEL": "errorlog",

@@ -61,7 +61,7 @@ try {
     $_ENV['LOG_PATH'] = $tmpLog;
     $_ENV['DB_CONNECTION'] = 'sqlite';
     $_ENV['DB_DATABASE'] = $tmpDb;
-    $_ENV['SESSION_DRIVER'] = 'file';
+    $_ENV['SESSION_DRIVER'] = 'cookie';
     $_ENV['SESSION_COOKIE'] = 'pos_sess';
     $_ENV['SESSION_LIFETIME'] = '120';
     $_ENV['CACHE_STORE'] = 'array';
@@ -76,7 +76,7 @@ try {
     putenv("LOG_PATH={$tmpLog}");
     putenv('DB_CONNECTION=sqlite');
     putenv("DB_DATABASE={$tmpDb}");
-    putenv('SESSION_DRIVER=file');
+    putenv('SESSION_DRIVER=cookie');
     putenv('SESSION_COOKIE=pos_sess');
     putenv('SESSION_LIFETIME=120');
     putenv('CACHE_STORE=array');
