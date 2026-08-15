@@ -27,38 +27,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/lang/{locale}', [LanguageController::class, 'switch'])->name('lang.switch');
 
-// Debug Auth Route for Vercel troubleshooting
-Route::get('/debug-auth', function () {
-    $dbPath = config('database.connections.sqlite.database');
-    $dbExists = file_exists($dbPath);
-    $dbSize = $dbExists ? filesize($dbPath) : 0;
-    $userCount = 0;
-    $adminUser = null;
-    $dbError = null;
-    try {
-        $userCount = \App\Models\User::count();
-        $adminUser = \App\Models\User::where('email', 'admin@example.com')->first();
-    } catch (\Throwable $e) {
-        $dbError = $e->getMessage();
-    }
-
-    return response()->json([
-        'vercel_env' => env('VERCEL'),
-        'session_driver' => config('session.driver'),
-        'app_key' => config('app.key') ? 'SET (' . substr(config('app.key'), 0, 10) . '...)' : 'MISSING',
-        'db_path' => $dbPath,
-        'db_exists' => $dbExists,
-        'db_size' => $dbSize,
-        'db_error' => $dbError,
-        'user_count' => $userCount,
-        'admin_exists' => $adminUser ? true : false,
-        'session_id' => session()->getId(),
-        'auth_check' => auth()->check(),
-        'auth_user' => auth()->user(),
-        'cookies_received' => $_COOKIE,
-    ]);
-});
-
 // Auto Clear Browser Cookies Route
 Route::get('/clear-cookies', function () {
     return response('<!DOCTYPE html><html><head><meta http-equiv="refresh" content="1;url=/demo/admin"></head><body style="font-family:sans-serif;text-align:center;padding:50px;"><h2>Clearing Browser Cookies...</h2><p><a href="/demo/admin">Click here if not redirected in 1 second</a></p></body></html>', 200)
