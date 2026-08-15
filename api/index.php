@@ -47,8 +47,6 @@ try {
     // Unlink stale config/route cache files in /tmp
     @unlink('/tmp/config.php');
     @unlink('/tmp/routes.php');
-    @unlink('/tmp/events.php');
-    @unlink('/tmp/services.php');
 
     // Ensure storage structure exists in /tmp
     @mkdir('/tmp/logs', 0777, true);
