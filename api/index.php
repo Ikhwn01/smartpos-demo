@@ -44,10 +44,6 @@ try {
         @touch($tmpLog);
     }
 
-    // Unlink stale config/route cache files in /tmp
-    @unlink('/tmp/config.php');
-    @unlink('/tmp/routes.php');
-
     // Ensure storage structure exists in /tmp
     @mkdir('/tmp/logs', 0777, true);
     @mkdir('/tmp/framework/views', 0777, true);
