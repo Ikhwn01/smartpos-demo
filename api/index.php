@@ -55,7 +55,7 @@ try {
     // Override environment variables for Vercel read-only filesystem
     $_ENV['APP_KEY'] = $appKey;
     $_ENV['APP_ENV'] = 'production';
-    $_ENV['APP_DEBUG'] = 'false';
+    $_ENV['APP_DEBUG'] = 'true';
     $_ENV['LOG_CHANNEL'] = 'errorlog';
     $_ENV['LOG_PATH'] = $tmpLog;
     $_ENV['DB_CONNECTION'] = 'sqlite';
@@ -68,7 +68,7 @@ try {
 
     putenv("APP_KEY={$appKey}");
     putenv('APP_ENV=production');
-    putenv('APP_DEBUG=false');
+    putenv('APP_DEBUG=true');
     putenv('LOG_CHANNEL=errorlog');
     putenv("LOG_PATH={$tmpLog}");
     putenv('DB_CONNECTION=sqlite');
