@@ -14,6 +14,19 @@ try {
     $_ENV['VERCEL'] = '1';
     $_SERVER['VERCEL'] = '1';
 
+    // Populate $_COOKIE array from HTTP_COOKIE header for Vercel CLI/Serverless PHP runtime
+    $rawCookies = $_SERVER['HTTP_COOKIE'] ?? $_SERVER['COOKIE'] ?? $_ENV['HTTP_COOKIE'] ?? '';
+    if (!empty($rawCookies)) {
+        $cookiePairs = explode(';', $rawCookies);
+        foreach ($cookiePairs as $pair) {
+            $pair = trim($pair);
+            if (!empty($pair) && strpos($pair, '=') !== false) {
+                list($key, $val) = explode('=', $pair, 2);
+                $_COOKIE[trim($key)] = urldecode(trim($val));
+            }
+        }
+    }
+
     // Ensure /tmp has a writable copy of the SQLite database and log file
     $tmpDb = '/tmp/database.sqlite';
     $tmpLog = '/tmp/laravel.log';
