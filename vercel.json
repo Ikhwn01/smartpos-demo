@@ -21,6 +21,8 @@
     "APP_ENV": "production",
     "APP_KEY": "base64:HZhD1Z2XLzBOIJjzrAm3Qr76NVyvQqRwo3qj5gyhaRo=",
     "VIEW_COMPILED_PATH": "/tmp/framework/views",
+    "APP_PACKAGES_CACHE": "/tmp/packages.php",
+    "APP_SERVICES_CACHE": "/tmp/services.php",
     "CACHE_STORE": "array",
     "SESSION_DRIVER": "database",
     "SESSION_COOKIE": "pos_sess",

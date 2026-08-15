@@ -56,7 +56,7 @@ try {
     // Override environment variables for Vercel read-only filesystem
     $_ENV['APP_KEY'] = $appKey;
     $_ENV['APP_ENV'] = 'production';
-    $_ENV['APP_DEBUG'] = 'true';
+    $_ENV['APP_DEBUG'] = 'false';
     $_ENV['LOG_CHANNEL'] = 'errorlog';
     $_ENV['LOG_PATH'] = $tmpLog;
     $_ENV['DB_CONNECTION'] = 'sqlite';
@@ -66,10 +66,12 @@ try {
     $_ENV['SESSION_LIFETIME'] = '120';
     $_ENV['CACHE_STORE'] = 'array';
     $_ENV['VIEW_COMPILED_PATH'] = '/tmp/framework/views';
+    $_ENV['APP_PACKAGES_CACHE'] = '/tmp/packages.php';
+    $_ENV['APP_SERVICES_CACHE'] = '/tmp/services.php';
 
     putenv("APP_KEY={$appKey}");
     putenv('APP_ENV=production');
-    putenv('APP_DEBUG=true');
+    putenv('APP_DEBUG=false');
     putenv('LOG_CHANNEL=errorlog');
     putenv("LOG_PATH={$tmpLog}");
     putenv('DB_CONNECTION=sqlite');
@@ -79,6 +81,8 @@ try {
     putenv('SESSION_LIFETIME=120');
     putenv('CACHE_STORE=array');
     putenv('VIEW_COMPILED_PATH=/tmp/framework/views');
+    putenv('APP_PACKAGES_CACHE=/tmp/packages.php');
+    putenv('APP_SERVICES_CACHE=/tmp/services.php');
 
     // Forward request to Laravel entry point
     require __DIR__ . '/../public/index.php';
