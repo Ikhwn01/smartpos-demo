@@ -19,7 +19,7 @@ try {
     $tmpLog = '/tmp/laravel.log';
     $srcDb = __DIR__ . '/../database/database.sqlite';
 
-    if (!file_exists($tmpDb)) {
+    if (!file_exists($tmpDb) || filesize($tmpDb) === 0) {
         if (file_exists($srcDb) && filesize($srcDb) > 0) {
             @copy($srcDb, $tmpDb);
         } else {
@@ -37,7 +37,10 @@ try {
     @mkdir('/tmp/framework/sessions', 0777, true);
     @mkdir('/tmp/framework/cache', 0777, true);
 
+    $appKey = 'base64:HZhD1Z2XLzBOIJjzrAm3Qr76NVyvQqRwo3qj5gyhaRo=';
+
     // Override environment variables for Vercel read-only filesystem
+    $_ENV['APP_KEY'] = $appKey;
     $_ENV['APP_ENV'] = 'production';
     $_ENV['APP_DEBUG'] = 'false';
     $_ENV['LOG_CHANNEL'] = 'errorlog';
@@ -49,6 +52,7 @@ try {
     $_ENV['CACHE_STORE'] = 'array';
     $_ENV['VIEW_COMPILED_PATH'] = '/tmp/framework/views';
 
+    putenv("APP_KEY={$appKey}");
     putenv('APP_ENV=production');
     putenv('APP_DEBUG=false');
     putenv('LOG_CHANNEL=errorlog');
